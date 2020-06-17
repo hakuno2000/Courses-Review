@@ -10,15 +10,15 @@ import javax.persistence.Table;
 
 @Getter @Setter
 @Entity
-@Table(name = "admins")
-public class Admin {
+@Table(name = "students_courses")
+public class Review {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "student_id", nullable = false)
+    private Long studentId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "course_id", nullable = false)
+    private Long courseId;
 }

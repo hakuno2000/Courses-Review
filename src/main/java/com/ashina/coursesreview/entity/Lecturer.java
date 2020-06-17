@@ -16,11 +16,14 @@ public class Lecturer {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "deegree", nullable = false)
-    private String deegree;
+    @Column(name = "degree", nullable = false)
+    private String degree;
 
     @Column(name = "department", nullable = false)
     private String department;

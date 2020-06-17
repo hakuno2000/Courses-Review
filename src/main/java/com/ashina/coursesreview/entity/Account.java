@@ -9,19 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Getter @Setter
-@Entity
-@Table (name = "accounts")
 public class Account {
-    @Id
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    public static Long currentId;
 
-    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "type", nullable = false)
-    private Long type;
+    public static Long type;
+
+    public static Long getType() {
+        return type;
+    }
+
+    public static void setType(Long type) {
+        Account.type = type;
+    }
 }
