@@ -15,6 +15,12 @@ public interface CourseService {
 
     List<Course> findCoursesByStudentId(Long studentID);
 
+    List<Course> findCourseByStudentIdAndNameContaining(Long id, String name);
+
+    List<Course> findCourseByLecturerId(Long id);
+
+    List<Course> findCourseByLecturerIdAndNameContaining(Long id, String name);
+
     List<Course> findByNameContaining(String name);
 
     void deleteById(Long id);
@@ -22,4 +28,8 @@ public interface CourseService {
     Course save(Course course);
 
     void calAvgReview();
+
+    void updateReview(Long studentId, Long courseId, Long coSoVatChat, Long noiDungMonHoc, Long hoatDongGiangVien);
+
+    Course findReviewById(Long studentId, Long courseId);
 }

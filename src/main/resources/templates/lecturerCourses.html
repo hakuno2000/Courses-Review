@@ -8,21 +8,12 @@
 	<div class="container" id="main-content">
 		<div class="row">
 			<div class="col-6 no-padding">
-				<form class="form-inline" action="#" th:action="@{/admin/courses/search}" method="get">
+				<form class="form-inline" action="#" th:action="@{/lecturer/search}" method="get">
 					<input class="form-control mr-sm-2" type="search" name="name" placeholder="Courses..." />
 					<button class="btn btn-primary" type="submit">
 						<i class="fa fa-search"></i> Search
 					</button>
-					<a style="margin-left: 10px" href="#" th:href="@{/course/create}" class="btn btn-success float-left">
-						<i class="fa fa-plus-square"></i> Add
-					</a>
 				</form>
-			</div>
-
-			<div class="col-6">
-				<a style="margin-left: 10px" href="#" th:href="@{/admin/courses}" class="btn btn-success float-right"> Manage Courses </a>
-				<a style="margin-left: 10px" href="#" th:href="@{/admin/students}" class="btn btn-success float-right"> Manage Students </a>
-				<a style="margin-left: 10px" href="#" th:href="@{/admin/lecturers}" class="btn btn-success float-right"> Manage Lecturers </a>
 			</div>
 		</div>
 
@@ -40,7 +31,7 @@
 
 			<th:block th:unless="${#lists.isEmpty(courses)}">
 				<div class="table-responsive">
-					<h5>List of courses</h5>
+					<h5>List of your courses</h5>
 					<table class="table table-bordered table-hover">
 						<thead>
 						<tr>
@@ -53,7 +44,6 @@
 							<th>Cơ sở vật chất</th>
 							<th>Nội dung môn học</th>
 							<th>Hoạt động giảng viên</th>
-							<th></th>
 						</tr>
 						</thead>
 						<tbody>
@@ -68,11 +58,6 @@
 							<td th:text="${course.coSoVatChat}"></td>
 							<td th:text="${course.noiDungMonHoc}"></td>
 							<td th:text="${course.hoatDongGiangVien}"></td>
-							<td>
-								<a href="#" th:href="@{/course/{id}/delete(id=${course.id})}" class="text-danger">
-									<i class="fa fa-trash"></i>
-								</a>
-							</td>
 						</tr>
 						</tbody>
 					</table>

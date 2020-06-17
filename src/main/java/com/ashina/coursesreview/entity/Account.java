@@ -18,11 +18,21 @@ public class Account {
 
     public static Long type;
 
+    public static Long currentCourse;
+
     public static Long getType() {
         return type;
     }
 
     public static void setType(Long type) {
         Account.type = type;
+    }
+
+    public static Long getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public static void setCurrentCourse(Long currentCourse) {
+        Account.currentCourse = currentCourse;
     }
 }
