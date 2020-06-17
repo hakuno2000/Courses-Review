@@ -12,4 +12,10 @@ public interface StudentRepo extends JpaRepository<Student, Long> {
     List<Student> findAll();
 
     Optional<Student> findById(Long id);
+
+    List<Student> findByNameContaining(String name);
+
+    void deleteById(Long id);
+
+    Student save(Student student);
 }

@@ -15,5 +15,7 @@ public interface LecturerRepo extends JpaRepository<Lecturer, Long> {
 
     void deleteById(Long id);
 
+    Lecturer save(Lecturer lecturer);
+
     List<Lecturer> findByNameContaining(String name);
 }

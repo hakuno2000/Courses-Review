@@ -1,6 +1,8 @@
 package com.ashina.coursesreview.controller;
 
+import com.ashina.coursesreview.entity.Course;
 import com.ashina.coursesreview.entity.Lecturer;
+import com.ashina.coursesreview.entity.Student;
 import com.ashina.coursesreview.service.AdminService;
 import com.ashina.coursesreview.service.CourseService;
 import com.ashina.coursesreview.service.LecturerService;
@@ -30,7 +32,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/lecturers")
-    public String findAllAccounts(Model model) {
+    public String findAllLecturers(Model model) {
         List<Lecturer> lecturers = lecturerService.findAll();
         model.addAttribute("lecturers", lecturers);
         return "adminLecturers";
@@ -42,5 +44,35 @@ public class AdminController {
         List<Lecturer> lecturers = lecturerService.findByNameContaining(name);
         model.addAttribute("lecturers", lecturers);
         return "adminLecturers";
+    }
+
+    @GetMapping("/admin/students")
+    public String findAllStudents(Model model) {
+        List<Student> students = studentService.findAll();
+        model.addAttribute("students", students);
+        return "adminStudents";
+    }
+
+    @GetMapping("/admin/students/search")
+    public String findStudentByName(@RequestParam("name") String name, Model model) {
+        if (name.isEmpty()) return "redirect:/admin/students";
+        List<Student> students = studentService.findByNameContaining(name);
+        model.addAttribute("students", students);
+        return "adminStudents";
+    }
+
+    @GetMapping("/admin/courses")
+    public String findAllCourses(Model model) {
+        List<Course> courses = courseService.findAll();
+        model.addAttribute("courses", courses);
+        return "adminCourses";
+    }
+
+    @GetMapping("/admin/courses/search")
+    public String findCourseByName(@RequestParam("name") String name, Model model) {
+        if (name.isEmpty()) return "redirect:/admin/courses";
+        List<Course> courses = courseService.findByNameContaining(name);
+        model.addAttribute("courses", courses);
+        return "adminCourses";
     }
 }

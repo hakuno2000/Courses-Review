@@ -30,4 +30,19 @@ public class StudentServiceImpl implements StudentService {
         if (student.isEmpty()) return false;
         return student.get().getPassword().equals(account.getPassword());
     }
+
+    @Override
+    public List<Student> findByNameContaining(String name) {
+        return studentRepo.findByNameContaining(name);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        studentRepo.deleteById(id);
+    }
+
+    @Override
+    public Student save(Student student) {
+        return studentRepo.save(student);
+    }
 }

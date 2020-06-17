@@ -15,5 +15,7 @@ public interface LecturerService {
 
     void deleteByid(Long id);
 
+    Lecturer save(Lecturer lecturer);
+
     List<Lecturer> findByNameContaining(String name);
 }

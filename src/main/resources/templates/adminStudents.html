@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+	<nav th:replace="layout :: header"></nav>
+
+	<div class="container" id="main-content">
+		<div class="row">
+			<div class="col-6 no-padding">
+				<form class="form-inline" action="#" th:action="@{/admin/students/search}" method="get">
+					<input class="form-control mr-sm-2" type="search" name="name" placeholder="Student..." />
+					<button class="btn btn-primary" type="submit">
+						<i class="fa fa-search"></i> Search
+					</button>
+					<a style="margin-left: 10px" href="#" th:href="@{/student/create}" class="btn btn-success float-left">
+						<i class="fa fa-plus-square"></i> Add
+					</a>
+				</form>
+			</div>
+
+			<div class="col-6">
+				<a style="margin-left: 10px" href="#" th:href="@{/admin/courses}" class="btn btn-success float-right"> Manage Courses </a>
+				<a style="margin-left: 10px" href="#" th:href="@{/admin/students}" class="btn btn-success float-right"> Manage Students </a>
+				<a style="margin-left: 10px" href="#" th:href="@{/admin/lecturers}" class="btn btn-success float-right"> Manage Lecturers </a>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div th:if="${successMessage}" class="col-12 alert alert-success alert-dismissible fade show" role="alert">
+				<span th:text="${successMessage}"></span>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<th:block th:if="${#lists.isEmpty(students)}">
+				<h5>No courses</h5>
+			</th:block>
+
+			<th:block th:unless="${#lists.isEmpty(students)}">
+				<div class="table-responsive">
+					<h5>List of lecturers</h5>
+					<table class="table table-bordered table-hover">
+						<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Majors</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each="student,iterStat : ${students}">
+							<!--th scope="row" th:text="${iterStat.count}"></th-->
+							<td th:text="${student.id}"></td>
+							<td th:text="${student.name}"></td>
+							<td th:text="${student.majors}"></td>
+							<td th:text="${student.phone}"></td>
+							<td th:text="${student.email}"></td>
+							<td>
+								<a href="#" th:href="@{/student/{id}/delete(id=${student.id})}" class="text-danger">
+									<i class="fa fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</th:block>
+		</div>
+	</div><!-- /.container -->
+
+	<footer th:replace="layout :: footer"></footer>
+
+</body>
+</html>

@@ -12,4 +12,10 @@ public interface StudentService {
     Optional<Student> findById(Long id);
 
     Boolean studentLogin(Account account);
+
+    List<Student> findByNameContaining(String name);
+
+    void deleteById(Long id);
+
+    Student save(Student student);
 }

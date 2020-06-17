@@ -24,11 +24,6 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void save(Course course) {
-        courseRepo.save(course);
-    }
-
-    @Override
     public void delete(Long id) {
         courseRepo.deleteById(id);
     }
@@ -36,5 +31,20 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> findCoursesByStudentId(Long studentID) {
         return courseRepo.findCoursesByStudentId(studentID);
+    }
+
+    @Override
+    public List<Course> findByNameContaining(String name) {
+        return courseRepo.findByNameContaining(name);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        courseRepo.deleteById(id);
+    }
+
+    @Override
+    public Course save(Course course) {
+        return courseRepo.save(course);
     }
 }

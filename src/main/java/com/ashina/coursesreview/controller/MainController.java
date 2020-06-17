@@ -25,18 +25,27 @@ public class MainController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("home")
+    @GetMapping("/")
+    public String mainPage() {
+        if (Account.currentId == null) return "redirect:/login";
+        else if (Account.type == 0) return "redirect:/admin";
+        else if (Account.type == 1) return "redirect:/lecturer";
+        else return "redirect:/student";
+    }
+
+    @GetMapping("/home")
     public String testRedirect() {
         return "redirect:/";
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String basicLogin(Model model) {
+        Account.currentId = null; Account.type = null;
         model.addAttribute("account", new Account());
         return "formLogin";
     }
 
-    @PostMapping("home")
+    @PostMapping("/home")
     public String testLogin(Account account) {
         Account.currentId = account.getId();
         if (Account.currentId == null) return "redirect:/login";

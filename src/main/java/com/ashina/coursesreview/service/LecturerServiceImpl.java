@@ -37,6 +37,11 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
+    public Lecturer save(Lecturer lecturer) {
+        return  lecturerRepo.save(lecturer);
+    }
+
+    @Override
     public List<Lecturer> findByNameContaining(String name) {
         return lecturerRepo.findByNameContaining(name);
     }

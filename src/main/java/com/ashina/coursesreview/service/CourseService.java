@@ -11,9 +11,13 @@ public interface CourseService {
 
     Optional<Course> findById(Long id);
 
-    void save(Course course);
-
     void delete(Long id);
 
     List<Course> findCoursesByStudentId(Long studentID);
+
+    List<Course> findByNameContaining(String name);
+
+    void deleteById(Long id);
+
+    Course save(Course course);
 }
