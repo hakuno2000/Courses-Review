@@ -47,4 +47,9 @@ public class CourseServiceImpl implements CourseService {
     public Course save(Course course) {
         return courseRepo.save(course);
     }
+
+    @Override
+    public void calAvgReview() {
+        courseRepo.calAvgReview();
+    }
 }

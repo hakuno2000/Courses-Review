@@ -21,4 +21,13 @@ public class Review {
 
     @Column(name = "course_id", nullable = false)
     private Long courseId;
+
+    @Column(name = "coSoVatChat")
+    private Long coSoVatChat;
+
+    @Column(name = "noiDungMonHoc")
+    private Long noiDungMonHoc;
+
+    @Column(name = "hoatDongGiangVien")
+    private Long hoatDongGiangVien;
 }

@@ -63,6 +63,7 @@ public class AdminController {
 
     @GetMapping("/admin/courses")
     public String findAllCourses(Model model) {
+        courseService.calAvgReview();
         List<Course> courses = courseService.findAll();
         model.addAttribute("courses", courses);
         return "adminCourses";

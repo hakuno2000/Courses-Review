@@ -50,6 +50,9 @@
 							<th>Number</th>
 							<th>Time</th>
 							<th>Room</th>
+							<th>Cơ sở vật chất</th>
+							<th>Nội dung môn học</th>
+							<th>Hoạt động giảng viên</th>
 							<th></th>
 						</tr>
 						</thead>
@@ -62,6 +65,9 @@
 							<td th:text="${course.number}"></td>
 							<td th:text="${course.time}"></td>
 							<td th:text="${course.room}"></td>
+							<td th:text="${course.coSoVatChat}"></td>
+							<td th:text="${course.noiDungMonHoc}"></td>
+							<td th:text="${course.hoatDongGiangVien}"></td>
 							<td>
 								<a href="#" th:href="@{/course/{id}/delete(id=${course.id})}" class="text-danger">
 									<i class="fa fa-trash"></i>

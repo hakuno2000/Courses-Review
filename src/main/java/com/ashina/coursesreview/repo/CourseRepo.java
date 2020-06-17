@@ -3,8 +3,10 @@ package com.ashina.coursesreview.repo;
 import com.ashina.coursesreview.entity.Account;
 import com.ashina.coursesreview.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,4 +25,21 @@ public interface CourseRepo extends JpaRepository<Course, Long> {
     void deleteById(Long id);
 
     Course save(Course course);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE courses c,\n" +
+            "(SELECT c.id, ROUND(AVG(sc.coSoVatChat), 2) AS coSoVatChat,\n" +
+            "        ROUND(AVG(sc.noiDungMonHoc), 2) AS noiDungMonHoc,\n" +
+            "        ROUND(AVG(sc.hoatDongGiangVien), 2) AS hoatDongGiangVien\n" +
+            "FROM students_courses sc JOIN courses c on sc.course_id = c.id\n" +
+            "GROUP BY course_id) AS t\n" +
+            "\n" +
+            "SET\n" +
+            "    c.coSoVatChat = t.coSoVatChat,\n" +
+            "    c.noiDungMonHoc = t.noiDungMonHoc,\n" +
+            "    c.hoatDongGiangVien = t.hoatDongGiangVien\n" +
+            "WHERE\n" +
+            "    c.id = t.id", nativeQuery = true)
+    void calAvgReview();
 }

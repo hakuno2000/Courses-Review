@@ -20,4 +20,6 @@ public interface CourseService {
     void deleteById(Long id);
 
     Course save(Course course);
+
+    void calAvgReview();
 }
