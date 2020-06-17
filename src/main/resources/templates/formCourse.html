@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+	<nav th:replace="layout :: header"></nav>
+
+	<div class="container" id="main-content">
+		<div class="row d-flex justify-content-center">
+			<form style="min-width: 300px;" action="#" th:action="@{/course/create}" th:object="${course}" method="post"
+				  novalidate="novalidate">
+				<h5 class="text-center">Add Course</h5>
+
+<!--				<input type="hidden" th:field="*{id}" />-->
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Course id"
+						   th:field="*{id}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Course Name"
+						   th:field="*{name}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Subject Code"
+						   th:field="*{code}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Class Number"
+						   th:field="*{number}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Schedule"
+						   th:field="*{time}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Classroom"
+						   th:field="*{room}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('room')}" th:errors="*{room}"></em>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-block btn-primary">
+						<i class="fa fa-save"></i> Save
+					</button>
+				</div>
+			</form>
+		</div>
+	</div><!-- /.container -->
+
+	<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

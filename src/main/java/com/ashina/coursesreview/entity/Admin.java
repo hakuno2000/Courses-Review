@@ -16,6 +16,9 @@ public class Admin {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
 }
